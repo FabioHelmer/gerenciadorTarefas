@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<title>FH-Gerenciador de Tarefas</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</head>
+<body style="background: #F8F8FF">
+
+	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+
+	<div class="container">
+		<br>
+		<h3>Listagem de Tarefas</h3>
+		<a href="/tarefas/inserir" class="btn btn-success mr-1x float-right">
+		<i class="fas fa-plus-square fa-2x"></i>
+		</a>
+<!-- 		<a href="/tarefas/concluidas" class="btn btn-success mr-1x float-right" style="margin-bottom:10px" > -->
+<!-- 		<i class="fas fa-plus-square fa-1x"></i> -->
+<!-- 		</a> -->
+		<br><br><br> 
+		<div th:each="tarefa:${tarefas}">
+			<div class="card  mb-3 text-light" style=" background-color:#8B7B8B">
+				<div class="card-header" th:text=${tarefa.titulo}>
+					
+				</div>
+				<div class="card-body bg-light text-dark" style="padding-bottom:0px">
+					<p class="card-text" th:text="${tarefa.descricao}"></p>
+					<p class="card-text" th:text="${'Data de expiração: '+ #dates.format(tarefa.dataLimite,'dd/MM/yyyy')}"/>
+					<div th:if="${!tarefa.concluida}" >
+					<p th:if="${tarefa.dataLimite.after(new java.util.Date())}" class="card-text text-success" ><strong>Em dia</strong></p>
+					</div>
+					<div th:if="${!tarefa.concluida}" >
+					<p th:if="${!tarefa.dataLimite.after(new java.util.Date())}" class="card-text text-danger" ><strong>Atrasada</strong></p>
+					</div>
+					<p class="float-right">
+					<a th:if="${!tarefa.concluida}"  th:href="@{/tarefas/concluir/{id}(id=${tarefa.id})}" class="btn btn-outline-info "  ><i class="fas fa-check-square fa-1x"></i></a>
+					<a th:if="${!tarefa.concluida}"  th:href="@{/tarefas/alterar/{id}(id=${tarefa.id})}" class="btn btn-outline-warning "  ><i class="fas fa-edit fa-1x"></i></a>
+					<a  th:href="@{/tarefas/excluir/{id}(id=${tarefa.id})}" class="btn btn-outline-danger "  ><i class="fas fa-trash-alt fa-1x"></i></a>
+					
+					</p>
+					
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

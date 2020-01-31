@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<title>FH-Gerenciador de Tarefas</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" 
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</head>
+<body style="background: #F8F8FF">
+
+	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+	<br><br><br>
+	<div class="container">
+
+		<div th:each="usuario:${usuarios}">
+			<div class="card  mb-3 text-light" style=" background-color:#563d7c">
+				<div class="card-header" th:text=${usuario.nomeUsuario}></div>
+				<div class="card-body bg-light text-dark" style="padding-bottom:0px">
+				<div class="form-group">
+					<label><strong>Email: </strong></label>
+					<p class="card-text" th:text="${usuario.email}"></p>
+				
+				</div>
+				<div class="form-group">
+					<label ><strong>Idade:</strong></label >
+					<p class="card-text" th:text="${usuario.idade}"></p>
+				
+				</div>
+				<div class="form-group">
+					<label ><strong>Profissão:</strong></label >
+					<p class="card-text" th:text="${usuario.profissao}"></p>
+				
+				</div>
+				<div class="form-group">
+					<label ><strong>CPF:</strong></label >
+					<p class="card-text" th:text="${usuario.CPF}"></p>
+				
+				</div>
+				<div class="form-group">
+					<label ><strong>Celular:</strong></label >
+					<p class="card-text" th:text="${usuario.celular}"></p>
+				
+				</div>
+					
+					
+				</div>
+					
+				
+			</div>
+		</div>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<title>FH-Gerenciador de Tarefas</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+	integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+	crossorigin="anonymous">
+
+</head>
+<body style="background: #F8F8FF">
+
+	<!-- cabeçalho -->
+	<nav class="navbar navbar-expand-sm navbar-dark" style="background: #563d7c" >
+		<!--logo-->
+		<a class="navbar-brand" href="/">FH Gerenciador</a>
+	</nav>
+	<!-- fim cabeçalho -->
+
+	<div class="container">
+		<h3>Novo Usuário</h3>
+		<br>
+		<form action="/registration" class="form-horizoltal" method="post" th:object="${usuario}">
+			
+			<div class="row">
+				<div class="form-group col-md-6">
+
+					<label>Nome Completo:</label>
+					<input type="text" class="form-control" th:field="*{nomeUsuario}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomeUsuario')}">
+						<label th:errors="*{nomeUsuario}" class="validation-messege"></label>
+					</div>
+				</div>
+			</div>			
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label>E-mail:</label> 
+					<input type="text"  class="form-control" th:field="*{email}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}">
+						<label th:errors="*{email}" class="validation-messege"></label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-6">
+
+					<label>Senha:</label>
+					<input type="password" class="form-control" th:field="*{senha}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('senha')}">
+						<label th:errors="*{senha}" class="validation-messege"></label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-6">
+
+					<label>Numero CPF:</label>
+					<input maxlength="11" type="text" class="form-control" th:field="*{CPF}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('CPF')}">
+						<label th:errors="*{CPF}" class="validation-messege"></label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-6">
+
+					<label>Idade:</label>
+					<input type="text" class="form-control" th:field="*{idade}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('idade')}">
+						<label th:errors="*{idade}" class="validation-messege"></label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-6">
+
+					<label>Telefone:</label>
+					<input maxlength="14" placeholder="DDD 999..."  type="tel" class="form-control" th:field="*{celular}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('celular')}">
+						<label th:errors="*{celular}" class="validation-messege"></label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-md-6">
+
+					<label>Profissão:</label>
+					<input type="text" class="form-control" th:field="*{profissao}">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('profissao')}">
+						<label th:errors="*{profissao}" class="validation-messege"></label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-6">
+					<button type="submit" class=" btn btn-primary">Salvar</button>
+					<a href="/conta/login" class="btn btn-danger mr-1x">cancelar</a>
+				</div>
+
+			</div>
+
+
+		</form>
+
+
+	</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+</body>
+</html>
